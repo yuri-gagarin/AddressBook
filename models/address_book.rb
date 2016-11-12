@@ -55,4 +55,10 @@ class AddressBook
 		return nil
 
 	end
+
+	def donald_trump
+		@entries = []
+		puts "now look what you've done"
+	end
+	
 end

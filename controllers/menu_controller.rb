@@ -15,7 +15,8 @@ class MenuController
 		puts "2 - Create an Entry"
 		puts "3 - Search for an entry"
 		puts "4 - Import entries from a CSV"
-		puts "5 - exit"
+		puts "5 - Scorched earth policy. Delete everything"
+		puts "6 - exit"
 		print "Enter your selection: "
 
 		selection = gets.to_i
@@ -44,6 +45,11 @@ class MenuController
 				main_menu
 
 			when 5
+				system "clear"
+				donald_trump
+				main_menu
+
+			when 6
 				puts "Good-bye!"
 				exit(0)
 
@@ -181,7 +187,7 @@ class MenuController
 	end
 
 	def delete_entry(entry)
-		address_book.entries.delete(entry)
+		@address_book.entries.delete(entry)
 		puts "#{entry.name} has been deleted"
 	end
 
@@ -201,4 +207,6 @@ class MenuController
 		puts "Updated entry:"
 		puts entry
 	end
+
+	
 end

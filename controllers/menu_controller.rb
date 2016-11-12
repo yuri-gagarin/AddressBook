@@ -109,7 +109,7 @@ class MenuController
 		if file_name.empty?
 			system "clear"
 			puts "No CSV file read"
-			main_mene
+			main_menu
 		end
 
 		begin
@@ -138,7 +138,10 @@ class MenuController
 
 			when "n"
 			when "d"
+				delete_entry(entry)
 			when "e"
+				edit_entry(entry)
+				entry_submenu(entry)
 			when "m"
 				system "clear"
 				main_menu
@@ -153,7 +156,7 @@ class MenuController
 
 		puts "\nd - delete entry"
 		puts "e - edit this entry"
-		puts "m - retrun to main menu"
+		puts "m - return to main menu"
 
 		selection = gets.chomp
 
@@ -175,5 +178,27 @@ class MenuController
 			puts entry.to_s
 			search_submenu(entry)
 		end
+	end
+
+	def delete_entry(entry)
+		address_book.entries.delete(entry)
+		puts "#{entry.name} has been deleted"
+	end
+
+	def edit_entry(entry)
+		print "Updated name: "
+		name = gets.chomp
+		print "Updated phone number: "
+		phone_number = gest.chomp
+		print "Updated email: "
+		email = gets.chomp
+
+		entry.name = name if !name.empty?
+		entry.phone_number = phone_number if !phone_number.empty?
+		entry.email = email if !email.empty?
+		system "clear"
+
+		puts "Updated entry:"
+		puts entry
 	end
 end
